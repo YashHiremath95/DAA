@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <string.h>
-void main()
+int main()
 {
 
   char a[100], b[100];
   int i,n,m,j;
-  clrscr();
+  
   printf("Enter some text\n");
-  gets(a);
+  scanf("%s",a);
   printf("Enter a string to find\n");
-  gets(b);
+  scanf("%s",b);
   m=strlen(b);
   n=strlen(a);
   for(i=0;i<=n-m;i++)
@@ -23,13 +23,13 @@ void main()
     if(j==m)
     {
       printf("SUBSTRING FOUND AT LOCATION %d\n",i+1);
-      getch();
-      exit();
+      return 0;
        }
 
        }
 
 	printf("SUBSTRING NOT FOUND\n");
 
-      getch();
+      return 0;
     }
+
