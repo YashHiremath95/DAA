@@ -1,33 +1,39 @@
-#include <stdio.h>
-
-#define MAX_USERS 100
-#define MAX_NAME_LENGTH 50
-#define MAX_LOCATION_LENGTH 50
-
-typedef struct {
-    char name[MAX_NAME_LENGTH];
-    char location[MAX_LOCATION_LENGTH];
-} User;
-
-int main() {
-    User users[MAX_USERS] = {
-        {"Alice", "New York"},
-        {"Bob", "Los Angeles"},
-        {"Charlie", "New York"}
-    };
-    int numUsers = 3;
-
-    // Finding users in the same location
-    char location[MAX_LOCATION_LENGTH];
-    printf("Enter location to search for users: ");
-    scanf("%s", location);
-
-    printf("Users in %s:\n", location);
-    for (int i = 0; i < numUsers; i++) {
-        if (strcmp(users[i].location, location) == 0) {
-            printf("- %s\n", users[i].name);
+#include<stdio.h>
+#include<string.h>
+struct Profile
+{
+    char name[50];
+    char location[50];
+};
+void findNetwork(struct Profile profiles[],int numProfiles,const char*targetLocation)
+{
+    for(int i=0;i<numProfiles;i++)
+    {
+        if(strcmp(profiles[i].location,targetLocation)==0)
+        {
+            printf("%s\n",profiles[i].name);
         }
     }
-
-    return 0;
+}
+int main()
+{
+    char location[50];
+    int numProfiles;
+    struct Profile profiles[]={
+        {"Ajith","Bangalore"},
+        {"Viji","Bangalore"},
+        {"Narendra","Delhi"},
+        {"Mukesh","Mumbai"},
+        {"Vijay","Chennai"},
+        {"Roy","Kolkata"}
+        };
+        numProfiles=sizeof(profiles)/sizeof(profiles[0]);
+        printf("Enter name of location you want to find people from\n");
+        scanf("%s",location);
+        printf("The people from that location are-\n");
+        findNetwork(profiles,numProfiles,location);
+        
+        return 0;
+    
+    
 }
